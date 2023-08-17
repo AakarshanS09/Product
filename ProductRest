@@ -18,8 +18,7 @@ global class ProductRestAPI {
             res.statusCode = 400;
         } else {
             system.debug('prdtId == ' + prdtId);
-            if('a0F5i00000HpbdJEAR' == prdtId)
-                system.debug('true');
+          
             List<Product__c> accList = [SELECT Id, Name,Product_code__c FROM Product__c WHERE Id = :prdtId];
             System.debug('accList=='+ accList);
             //accList == null
@@ -47,11 +46,7 @@ global class ProductRestAPI {
         RestResponse res = RestContext.response;
         RestRequest req = RestContext.request;    
         String prodId = req.requestURI.substring(req.requestURI.lastIndexOf('/')+1);
-        
-        //As params returns in Map<string, string> format and request the params
-        //Map<string, string> paramsMap = RestContext.request.params;
-        //It will get the Id passed from external system
-        //string prodId = paramsMap.get('Id');
+   
         ProductDetail response = new ProductDetail();
         //Query the product record
         prod = [Select Id, Name, Product_Code__c From Product__c Where Id =: prodId];
@@ -133,12 +128,7 @@ response.message = 'Product deleted successfully'; */
         
         //String requestBody = req.requestBody.toString();
         ProductDetail response = new ProductDetail();
-        
-        //As params returns in Map<string, string> format and request the params
-        //Map<string, string> paramsMap = RestContext.request.params;
-        //It will get the Id passed from external system
-        //string prodId = paramsMap.get('Id');
-        
+                
         //Create an instance of products
         List<Product__c> prod = new List <Product__c>();
         
