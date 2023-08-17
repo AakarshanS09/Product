@@ -10,9 +10,6 @@
         
         //Create an instance of products
         List<Product__c> prod = new List <Product__c>();
-        
-        //Map the input params to Id, name and productCode 
-        
         if (string.isBlank(prodId)){
             system.debug('prodId == ' + prodId);
             response.message = 'Product ID is required';
